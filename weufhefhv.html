@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>SPMB Page with Background Image</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+
+    button {
+      padding: 15px 25px;
+      border: unset;
+      border-radius: 15px;
+      color: #212121;
+      z-index: 1;
+      background: #e8e8e8;
+      position: relative;
+      font-weight: 1000;
+      font-size: 17px;
+      box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+      transition: all 250ms;
+      overflow: hidden;
+    }
+
+    button::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 0;
+      border-radius: 15px;
+      background-color: #212121;
+      z-index: -1;
+      box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+      transition: all 250ms;
+    }
+
+    button:hover {
+      color: #e8e8e8;
+    }
+
+    button:hover::before {
+      width: 100%;
+    }
+
+    .container-hover {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      cursor: pointer;
+    }
+
+    .container-hover:hover {
+      transform: scale(1.03);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .photo-hover {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      cursor: pointer;
+    }
+
+    .photo-hover:hover {
+      transform: scale(1.1);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+      z-index: 10;
+      position: relative;
+    }
+
+    .slider-container {
+      position: relative;
+      max-width: 600px;
+      margin: auto;
+      overflow: hidden;
+      border: 2px solid #ddd;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .slider {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+
+    .slide {
+      min-width: 100%;
+    }
+
+    .slide img {
+      width: 100%;
+      display: block;
+      border-radius: 8px;
+    }
+
+    .prev-btn, .next-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      padding: 15px;
+      cursor: pointer;
+      font-size: 20px;
+      z-index: 10;
+      border-radius: 50%;
+      transition: background 0.3s;
+    }
+
+    .prev-btn { left: 15px; }
+    .next-btn { right: 15px; }
+
+    .prev-btn:hover, .next-btn:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-cover bg-center p-4" style="background-image: url('bg2.png');">
+  <div class="max-w-xl mx-auto container-hover rounded-3xl overflow-hidden background-image: url('bg.png') bg-opacity-90 backdrop-blur">
+    <img src="spmb.jpg" class="w-full rounded-3xl object-cover photo-hover" height="350" width="600"/>
+    <div class="flex justify-center gap-8 mt-6">
+      <button class="bg-sky-400 rounded-full px-5 py-2 font-extrabold text-black text-2xl leading-none">Daftar</button>
+      <button class="bg-sky-400 rounded-full px-5 py-2 font-extrabold text-black text-2xl leading-none">Info</button>
+    </div>
+
+    <div class="flex flex-wrap gap-4 mt-6">
+      <div class="bg-blue-600 rounded-3xl p-6 flex-1 min-w-[45%] max-w-[48%] container-hover">
+        <h1 class="font-extrabold text-4xl mb-2">Visi</h1>
+        <p class="text-xl">Teks</p>
+      </div>
+      <div class="bg-white rounded-3xl p-6 flex-1 min-w-[45%] max-w-[48%] container-hover">
+        <h1 class="font-extrabold text-4xl mb-2">Misi</h1>
+        <p class="text-xl">Teks</p>
+      </div>
+    </div>
+
+    <div class="flex flex-col gap-6 mt-8">
+      <div class="w-full">
+        <h3 class="font-extrabold text-4xl mb-2">Pengumuman</h3>
+        <div class="bg-white rounded-3xl p-6 container-hover cursor-default">
+          <h2 class="font-extrabold text-xl mb-4 text-center">Kelulusan kelas 9<br/>TP 2024/2025</h2>
+          <div class="flex justify-center">
+            <button class="bg-gradient-to-r from-green-300 to-green-600 text-white rounded-full px-10 py-2 text-lg">Lihat</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="w-full">
+        <h3 class="font-extrabold text-4xl mb-4">Kegiatan</h3>
+        <div class="slider-container mx-auto">
+          <div class="slider">
+            <div class="slide"><img src="angkatan.jpg" alt="Foto 1"></div>
+            <div class="slide"><img src="perpisahan.png" alt="Foto 2"></div>
+            <div class="slide"><img src="market.jpg" alt="Foto 3"></div>
+            <div class="slide"><img src="guru.jpg" alt="Foto 4"></div>
+          </div>
+          <button class="prev-btn">❮</button>
+          <button class="next-btn">❯</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let currentSlide = 0;
+    const slider = document.querySelector('.slider');
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+
+    function showSlide(index) {
+      if (index >= totalSlides) currentSlide = 0;
+      if (index < 0) currentSlide = totalSlides - 1;
+      slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+    }
+
+    document.querySelector('.next-btn').addEventListener('click', () => {
+      currentSlide++;
+      showSlide(currentSlide);
+    });
+
+    document.querySelector('.prev-btn').addEventListener('click', () => {
+      currentSlide--;
+      showSlide(currentSlide);
+    });
+
+    setInterval(() => {
+      currentSlide++;
+      showSlide(currentSlide);
+    }, 3000);
+  </script>
+</body>
+</html>
